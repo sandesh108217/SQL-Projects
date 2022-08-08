@@ -1,0 +1,391 @@
+1. DEPARTMENT:
+create table department(department_id varchar(20) primary key, department_name varchar(25), block varchar(20));
+insert into department values('D101','Department of Mathematics','Block C');
+select * from department;
+
+
+2. LIBRARY: 
+create table library(
+library_id varchar(10) primary key,
+library_name varchar(20),
+department_id varchar(20),
+foreign key (department_id) references department(department_id)
+);
+insert into library values('L101','Central Library','D101');
+
+
+3. BOOK:
+create table book(
+book_id varchar(10) primary key,
+book_name varchar(30),
+ISBN_NO varchar(20) unique,
+library_id varchar(10),
+foreign key(library_id) references library(library_id)
+);
+insert all into book values('B301','Advanced Calculus','0811847910','L101')
+into Book values('B302','Linear Alzebra','0821847910','L101')
+into Book values('B303','Inferencial Statistics','0831847910','L101')
+into Book values('B304','DS for Business','0841847910','L101')
+into Book values('B305','Complex Systems','0851847910','L101')
+into Book values('B306','Computerational Networks','0861847910','L101')
+into Book values('B307','Digital Logic','0871847910','L101')
+select 1 from dual;
+
+
+4. PROGRAM: 
+create table program(
+program_id varchar(10) primary key,
+program_name varchar(30)
+);
+insert all into program values('pr101','Maths')
+into program values('pr102','Physics')
+into program values('pr103','Data Science')
+into program values('pr104','Statistics')
+into program values('pr105','Computer Science')
+select 1 from dual;
+
+
+5. SUBJECT:
+create table subject(
+subject_id varchar(10) primary key,
+subject_name varchar(3 0)
+);
+insert all into subject values('sub101','Real Analysis')
+into subject values('sub102','Algebra')
+into subject values('sub103','Differential Calculus')
+into subject values('sub104','Integral Calculus')
+into subject values('sub105','Geometry')
+into subject values('sub106','Quantum')
+into subject values('sub107','Mechanical')
+into subject values('sub108','Electrical')
+into subject values('sub109','Nuclear Physics')
+into subject values('sub110','Biophysics')
+into subject values('sub111','DBMS')
+into subject values('sub112','R Programming')
+into subject values('sub113','Data Visualization')
+into subject values('sub114','Python')
+into subject values('sub115','Tableau')
+into subject values('sub116','Point Estimation')
+into subject values('sub117','Interval Estimation')
+into subject values('sub118','Time Series')
+into subject values('sub119','Vital Statistics')
+into subject values('sub120','Data Structures')
+into subject values('sub121','Networking')
+into subject values('sub122','Software Engineering')
+into subject values('sub123','OOPS Concept')
+into subject values('sub124','Operating System')                    
+into subject values('sub125','Programming I')                    
+select 1 from dual;
+
+
+6. PROGRAM VS SUBJECT
+create table programVsSubject(
+program_id varchar(10),
+subject_id varchar(10),
+foreign key (program_id) references program(program_id),
+foreign key (subject_id) references subject(subject_id)
+); 
+insert all into programVsSubject values('pr101','sub101')
+into programVsSubject values('pr101','sub102')
+into programVsSubject values('pr101','sub103')
+into programVsSubject values('pr101','sub104')
+into programVsSubject values('pr101','sub105')
+                    
+into programVsSubject values('pr102','sub106')
+into programVsSubject values('pr102','sub107')
+into programVsSubject values('pr102','sub108')
+into programVsSubject values('pr102','sub109')
+into programVsSubject values('pr102','sub110')
+                    
+into programVsSubject values('pr103','sub111')
+into programVsSubject values('pr103','sub112')
+into programVsSubject values('pr103','sub113')
+into programVsSubject values('pr103','sub114')
+into programVsSubject values('pr103','sub115')
+                    
+into programVsSubject values('pr104','sub116')
+into programVsSubject values('pr104','sub117')
+into programVsSubject values('pr104','sub118')
+into programVsSubject values('pr104','sub119')
+into programVsSubject values('pr104','sub120')
+                    
+into programVsSubject values('pr105','sub121')
+into programVsSubject values('pr105','sub122')
+into programVsSubject values('pr105','sub123')
+into programVsSubject values('pr105','sub124')
+into programVsSubject values('pr105','sub125')                    
+select 1 from dual;
+
+
+7. EMPLOYEE
+create table employee(
+employee_id varchar(10) primary key,
+employee_name varchar(25),
+address varchar(25),
+contact_no int unique,
+mail_id varchar(40) unique,
+join_date date,
+DOB date,
+department_id varchar(20),
+foreign key (department_id) references department(department_id)
+);
+insert into employee values('E101', 'Shreya', 'Lucknow',9876763434, 'shreya026@gmail.com', 
+to_date('2013/11/05','YYYY/MM/DD'), to_date('2000/01/02','YYYY/MM/DD'),'D101');  
+
+insert into employee values('E102', 'Sandesh', 'Kathmandu', 7236735290, 'sandesh2827@gmail.com',
+to_date('2013/02/03','YYYY/MM/DD'), to_date('1999/01/23','YYYY/MM/DD'),'D101');
+
+insert into employee values('E103', 'Reetu', 'Chandigarh', 7529640289, 'reetu027@gmail.com',
+to_date('2016/10/17','YYYY/MM/DD'), to_date('1999/09/21','YYYY/MM/DD'),'D101');
+
+insert into employee values('E104', 'Ruksana', 'Mohali', 7271930827, ' ruksana0246@gmail.com',
+to_date('2015/04/15','YYYY/MM/DD'), to_date('1999/12/04','YYYY/MM/DD'),'D101');
+
+insert into employee values('E105', 'Ashmita', 'Sonipat', 7259273589, 'ashmita075@gmail.com',
+to_date('2017/03/30','YYYY/MM/DD'), to_date('2000/04/20','YYYY/MM/DD'),'D101');
+
+insert into employee values('E106', 'Pushti', 'Gurgaon', 9035793589, 'pushti3729@gmail.com',
+to_date('2018/01/31','YYYY/MM/DD'), to_date('1998/03/28','YYYY/MM/DD'),'D101');
+
+insert into employee values('E107', 'Neeru', 'Jaipur', 9659389589, 'neeru980@gmail.com',
+to_date('2016/02/27','YYYY/MM/DD'), to_date('2000/02/17','YYYY/MM/DD'),'D101');
+
+
+8. STUDENT
+create table student(
+student_id varchar(25) primary key,
+student_name varchar(25),
+DOB date,
+mail_id varchar(40),
+join_date date,
+contact_no int unique,
+department_id varchar(20),     
+program_id varchar(10),
+foreign key (department_id) references department(department_id),
+foreign key (program_id) references program(program_id)
+);
+insert all into student values('st101','Nick Rimando', to_date('2000/07/27' , 'YYYY/MM/DD'),'nick@gmail.com',to_date('2022/01/01','YYYY/MM/DD'),9927354011,'D101','pr102')
+into student values('st102','Graham Zusi', to_date('2000/01/13' , 'YYYY/MM/DD'),'graham@gmail.com',to_date('2021/10/09','YYYY/MM/DD'),9191045798,'D101','pr102')
+into student values('st103','Brad Davis', to_date('1999/09/18' , 'YYYY/MM/DD'),'brad@gmail.com',to_date('2021/09/14','YYYY/MM/DD'),8384858687,'D101','pr102')
+into student values('st104','Fabian Johnson', to_date('2001/08/20' , 'YYYY/MM/DD'),'fabian@gmail.com',to_date('2021/12/10','YYYY/MM/DD'),6567897701,'D101','pr103')
+into student values('st105','Geoff Cameron', to_date('2000/06/21' , 'YYYY/MM/DD'),'geoff@gmail.com',to_date('2022/01/01','YYYY/MM/DD'),8899345713,'D101','pr103')
+into student values('st106','Jozy Altidor', to_date('1999/03/01' , 'YYYY/MM/DD'),'jozy@gmail.com',to_date('2021/10/09','YYYY/MM/DD'),7970767445,'D101','pr103')
+into student values('st107','Aliya A', to_date('2001/05/06' , 'YYYY/MM/DD'),'aliya@gmail.com',to_date('2021/10/09','YYYY/MM/DD'),9234567851,'D101','pr101')
+into student values('st108','Abishek Mishra', to_date('2000/07/18' , 'YYYY/MM/DD'),'abishek@gmail.com',to_date('2022/01/10','YYYY/MM/DD'),9967842170,'D101','pr101')
+into student values('st109','Julain Green', to_date('1999/04/21' , 'YYYY/MM/DD'),'julian@gmail.com',to_date('2022/01/01','YYYY/MM/DD'),8456732193,'D101','pr101')
+into student values('st110','Noah K', to_date('2001/07/18' , 'YYYY/MM/DD'),'noah@gmail.com',to_date('2022/01/01','YYYY/MM/DD'),7766554433,'D101','pr104')
+select 1 from dual;
+
+
+9. GRADE RECORD
+create table gradeRecord(
+grade_id varchar(10) primary key,
+year date,
+grade double precision
+); 
+insert into gradeRecord values('G101', to_date('2023/01/21','YYYY/MM/DD'), 93.24);
+insert into gradeRecord values('G102', to_date('2022/07/13','YYYY/MM/DD'), 90.07);
+insert into gradeRecord values('G103', to_date('2022/09/17','YYYY/MM/DD'), 83.03);
+insert into gradeRecord values('G104', to_date('2024/03/05','YYYY/MM/DD'), 85.24);
+insert into gradeRecord values('G105', to_date('2022/02/11','YYYY/MM/DD'), 73.24);
+insert into gradeRecord values('G106', to_date('2024/11/08','YYYY/MM/DD'), 70.27);
+insert into gradeRecord values('G107', to_date('2025/04/18','YYYY/MM/DD'), 80.24);
+insert into gradeRecord values('G108', to_date('2024/07/16','YYYY/MM/DD'), 53.75);
+insert into gradeRecord values('G109', to_date('2024/09/27','YYYY/MM/DD'), 30.24);
+insert into gradeRecord values('G110', to_date('2025/06/14','YYYY/MM/DD'), 43.24);
+
+
+10. STUDENT VS GRADE
+create table studentVsGrade(
+grade_id varchar(10),
+student_id varchar(10),
+foreign key (grade_id) references gradeRecord(grade_id),
+foreign key (student_id) references student(student_id)
+);
+insert all into studentVsGrade values('G101','st101')
+into studentVsGrade values('G102','st102')
+into studentVsGrade values('G103','st103')
+into studentVsGrade values('G104','st104')
+into studentVsGrade values('G105','st105')
+into studentVsGrade values('G106','st106')
+select 1 from dual;
+
+
+11. TEACHER
+create table teacher(
+teacher_id varchar(10) primary key,
+employee_id varchar(10),
+program_id varchar(10),
+foreign key (employee_id) references employee(employee_id),
+foreign key (program_id) references program(program_id)
+);
+insert all into teacher values ('tc101','E101','pr101')
+into teacher values ('tc102','E102','pr102')
+into teacher values ('tc103','E103','pr103')
+into teacher values ('tc104','E104','pr104')
+into teacher values ('tc105','E105','pr105')                    
+select 1 from dual;
+
+
+12. SUBJECT VS TEACHER
+create table subjectVsTeacher(
+teacher_id varchar(10),
+subject_id varchar(10),
+foreign key (teacher_id) references teacher(teacher_id),
+foreign key (subject_id) references subject(subject_id)
+);
+insert all into subjectVsTeacher values('tc101','sub101')
+into subjectVsTeacher values('tc102','sub106')
+into subjectVsTeacher values('tc103','sub111')
+into subjectVsTeacher values('tc104','sub116')
+into subjectVsTeacher values('tc105','sub121')
+into subjectVsTeacher values('tc101','sub103')
+into subjectVsTeacher values('tc102','sub108')
+into subjectVsTeacher values('tc103','sub113')
+into subjectVsTeacher values('tc104','sub118')
+into subjectVsTeacher values('tc105','sub123')
+into subjectVsTeacher values('tc101','sub104')
+into subjectVsTeacher values('tc102','sub109')
+select 1 from dual;
+
+
+13. DEPARTMENT VS PROGRAM
+create table departmentVsProgram(
+department_id varchar(20),
+program_id varchar(10),
+foreign key (department_id) references department(department_id),
+foreign key (program_id) references program(program_id)
+);
+insert all into departmentVsProgram values('D101','pr101')
+into departmentVsProgram values('D101','pr102')
+into departmentVsProgram values('D101','pr103')
+into departmentVsProgram values('D101','pr104')
+into departmentVsProgram values('D101','pr105')
+select 1 from dual;
+
+
+14. Student Vs Book
+create table StudentVsBook(
+student_id varchar(10),
+book_id varchar(10) unique,
+foreign key (student_id) references student(student_id),
+foreign key (book_id) references book(book_id)
+);
+insert all into studentVsBook values('st101','B301')
+into studentVsBook values('st102','B302')
+into studentVsBook values('st103','B303')
+into studentVsBook values('st104','B304')
+into studentVsBook values('st105','B305')
+into studentVsBook values('st104','B306')
+into studentVsBook values('st103','B307')
+select 1 from dual;
+
+15: Student Vs Program
+create table studentVsProgram(student_id varchar(10), 
+program_id varchar(10),
+foreign key (student_id) references student(student_id),
+foreign key (program_id) references program(program_id)
+);
+insert all into studentVsProgram values('st101', 'pr103')
+into studentVsprogram values('st102', 'pr101')
+into studentVsProgram values('st103', 'pr105')
+into studentVsProgram values('st104', 'pr102')
+into studentVsProgram values('st105', 'pr104')
+into studentVsProgram values('st106', 'pr104')
+into studentVsProgram values('st107', 'pr103')
+into studentVsProgram values('st108', 'pr103')
+into studentVsProgram values('st110', 'pr101')
+select 1 from dual;
+insert into studentVsProgram values('st109', 'pr102');
+
+
+1:
+select * from department;
+2:
+select * from library;
+3:
+select * from book;
+4:
+select * from program;
+5:
+select * from subject;
+6:
+select * from programVsSubject;
+7:
+select * from employee;
+8:
+select * from student;
+9:
+select * from gradeRecord;
+10:
+select * from studentVsGrade;
+11:
+select * from teacher;
+12:
+select * from subjectVsTeacher;
+13:
+select * from departmentVsProgram;
+14:
+select * from studentVsBook;
+15:
+select * from studentVsProgram; 
+
+
+
+select s.student_id, s.student_name, g.year, g.grade from student s inner join 
+studentVsGrade svg on s.student_id = svg.student_id inner join
+gradeRecord g on svg.grade_id = g.grade_id where grade > 79;
+
+select s.student_id, s.student_name,b.book_id, b.book_name from student s left join studentVsBook sb 
+on s.student_id = sb.student_id left join book b on sb.book_id = b.book_id;
+
+
+select e.employee_name,tc.teacher_id, e.employee_name,s.subject_name from 
+employee e  inner join teacher tc on e.employee_id=tc.employee_id inner join subjectVsTeacher t 
+on tc.teacher_id=t.teacher_id inner join subject s on t.subject_id=s.subject_id
+
+
+select e.employee_id,e.employee_name as Teacher from 
+employee e inner join teacher t on e.employee_id=t.employee_id
+
+alter table student add city varchar(25);
+
+update student set city = 'New York' where student_id 
+between 'st105' and 'st109';
+
+create view studentWithgradeRecord as select s.student_id, 
+s.student_name, g.year, g.grade from student s inner join 
+studentVsGrade svg on s.student_id = svg.student_id inner join
+gradeRecord g on svg.grade_id = g.grade_id where grade > 79;
+
+select max(grade) as highestGrade from gradeRecord;
+
+select min(grade) as lowestGrade from gradeRecord;
+
+
+
+
+Lab Query:
+Shraddha:
+select e.employee_id, e.employee_name, e.mail_id, e.join_date, t.teacher_id
+from employee e inner join teacher t on e.employee_id = t.employee_id
+where e.employee_id between 'E102' and 'E105';
+
+Shreya:
+select * from student;
+select * from book;
+select * from studentVsBook;
+select student.student_id,student.student_name,book.book_name ,studentVsBook.book_id from student inner join studentVsBook  on student.student_id=studentVsBook.student_id inner join book  on studentVsBook.book_id=book.book_id where book.book_name='Linear Alzebra' ;
+
+
+Reetu:
+select employee_name,mail_id,contact_no,join_date from employee where employee_name like 'A%';
+
+Ruksana:
+select s.student_name, p.program_name from student s inner join  department d on s.department_id = d.department_id inner join DepartmentVsProgram dp on d.department_id=dp.department_id inner join program p on dp.program_id= p.program_id where p.program_name='Maths';
+
+Franck:
+select s.student_id,s.student_name,b.book_name ,
+sb.book_id from student s inner join studentVsBook  sb on 
+s.student_id=sb.student_id inner join book b  on 
+sb.book_id=b.book_id where b.book_name like '%Alzebra';
